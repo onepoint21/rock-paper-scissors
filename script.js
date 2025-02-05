@@ -24,7 +24,6 @@ function getUserChoice() {
 }
 
 userChoice = getUserChoice();
-console.log("You chose:", userChoice);
 
 // Get and store cpu choice
 function getCpuChoice() {
@@ -35,7 +34,31 @@ cpuChoice = getCpuChoice();
 let cpuValue = ["Rock", "Paper", "Scissors"];
 let cpuResult = cpuValue[cpuChoice - 1];
 
-console.log("Computer chose:", cpuResult);
+// Keeping Score
+let userScore = 0;
+let cpuScore = 0;
 
-// Set win conditional
+// Play the game in a single round
+function playRound(userChoice, cpuResult) {
+    console.log("You chose:", userChoice);
+    console.log("Computer chose:", cpuResult);
+
+    if (userChoice === cpuResult) {
+        console.log("It's a tie! Play again!");
+        return "tie";
+    } else if (
+        (userChoice === "Rock" && cpuResult === "Scissors") ||
+        (userChoice === "Scissors" && cpuResult === "Paper") ||
+        (userChoice === "Paper" && cpuResult === "Rock")
+    ) {
+        userScore++;
+        console.log("You win! Ready for the next round?");
+        return "win";
+    } else {
+        cpuScore++;
+        console.log("Computer wins! Ready for the next round?");
+        return "lose";
+    }
+}
+
 
